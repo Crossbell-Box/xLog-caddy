@@ -1,7 +1,7 @@
 FROM golang:1.19 AS BUILDER
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
-RUN xcaddy build --with github.com/gamalan/caddy-tlsredis
+RUN xcaddy build --with github.com/gamalan/caddy-tlsredis --with github.com/caddy-dns/cloudflare
 
 FROM debian:11-slim
 
