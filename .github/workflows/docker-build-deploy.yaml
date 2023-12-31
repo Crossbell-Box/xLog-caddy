@@ -18,8 +18,8 @@ jobs:
     needs:
       - build
     with:
-      images: rss3/daedalus
-      tag: sha-${{ github.sha }}
+      images: flosspicks/xlog-caddy
+      tag: latest
       cluster: dev
       namespace: crossbell
       releaseName: xlog-caddy
@@ -32,8 +32,8 @@ jobs:
     needs:
       - build
     with:
-      images: rss3/daedalus
-      tag: sha-${{ github.sha }}
+      images: flosspicks/xlog-caddy
+      tag: latest
       cluster: dev
       namespace: crossbell
       releaseName: xlog-caddy
