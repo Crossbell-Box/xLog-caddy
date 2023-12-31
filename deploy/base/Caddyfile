@@ -12,7 +12,7 @@
     dns cloudflare {env.CF_API_TOKEN}
     }
 
-    reverse_proxy xlog-internal.crossbell.svc:3000 {
+    reverse_proxy xlog-internal.crossbell.svc {
         header_up x-forwarded-proto http
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-For {remote_host}
@@ -28,7 +28,7 @@
     on_demand
     }
 
-    reverse_proxy xlog-internal.crossbell.svc:3000 {
+    reverse_proxy xlog-internal.crossbell.svc {
         header_up x-forwarded-proto http
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-For {remote_host}
