@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlog-caddy
+  namespace: crossbell
+spec:
+  selector:
+    matchLabels:
+      app: xlog-caddy
+  template:
+    metadata:
+      labels:
+        app: xlog-caddy
+    spec:
+      containers:
+        - name: caddy
+          image: kindjeff/caddy-tlsredis-docker
+          imagePullPolicy: Always
+          command: ["caddy", "run", "-config", "/app/Caddyfile"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          envFrom:
+            - secretRef:
+                name: xlog-caddy
+          ports:
+            - containerPort: 80
+              name: http
+            - containerPort: 443
+              name: https
+          volumeMounts:
+            - name: caddyfile
+              mountPath: /app
+      volumes:
+        - name: caddyfile
+          configMap:
+            name: xlog-caddy

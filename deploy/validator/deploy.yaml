@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlog-caddy-validator
+  namespace: crossbell
+spec:
+  selector:
+    matchLabels:
+      app: xlog-caddy-validator
+  template:
+    metadata:
+      labels:
+        app: xlog-caddy-validator
+    spec:
+      containers:
+        - name: caddy-validator
+          image: python
+          command: ["/bin/sh", "-c"]
+          args: ["pip install flask requests; flask --app=app run"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 5000
+              name: http
+          volumeMounts:
+            - name: validator
+              mountPath: /app.py
+              subPath: app.py
+      volumes:
+        - name: validator
+          configMap:
+            name: xlog-caddy-validator

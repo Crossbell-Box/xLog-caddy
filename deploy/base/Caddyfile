@@ -1,0 +1,36 @@
+{
+    storage redis {
+    }
+
+    on_demand_tls {
+    ask http://xlog-caddy-validator/
+    }
+}
+
+{$XLOG_DOMAIN}, *.{$XLOG_DOMAIN} {
+    tls jeff@rss3.io {
+    dns cloudflare {env.CF_API_TOKEN}
+    }
+
+    reverse_proxy xlog-internal.crossbell.svc:3000 {
+        header_up x-forwarded-proto http
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+    }
+}
+
+:8080 {
+    metrics
+}
+
+:80, :443 {
+    tls jeff@rss3.io {
+    on_demand
+    }
+
+    reverse_proxy xlog-internal.crossbell.svc:3000 {
+        header_up x-forwarded-proto http
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+    }
+}
