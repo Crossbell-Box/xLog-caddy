@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - deploy.yaml
+  - secret.yaml
   - ../validator
 
 configMapGenerator:
