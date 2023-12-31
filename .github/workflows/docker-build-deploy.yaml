@@ -30,7 +30,7 @@ jobs:
     with:
       images: flosspicks/xlog-caddy
       tag: latest
-      cluster: dev
+      cluster: prod
       namespace: crossbell
       releaseName: xlog-caddy
       revision: main
