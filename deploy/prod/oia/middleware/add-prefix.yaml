@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: xlog-oia-add-prefix
+  namespace: crossbell
+spec:
+  addPrefix:
+    prefix: /oia

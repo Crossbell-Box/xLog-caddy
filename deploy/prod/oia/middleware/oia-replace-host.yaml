@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: xlog-oia-replace-host
+  namespace: crossbell
+spec:
+  headers:
+    customRequestHeaders:
+      Host: "xlog.app"
+      X-Forwarded-Host: "xlog.app"

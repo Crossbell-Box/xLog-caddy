@@ -1,0 +1,25 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: xlog-oia-no-rewrite
+  namespace: crossbell
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`oia.xlog.app`) && PathPrefix(`/_next`)
+      middlewares:
+        - name: xlog-oia-replace-host
+      services:
+        - name: xlog-internal
+          port: 3000
+    - kind: Rule
+      match: Host(`oia.xlog.app`) && PathPrefix(`/.well-known`)
+      middlewares:
+        - name: xlog-oia-add-prefix
+        - name: xlog-oia-replace-host
+      services:
+        - name: xlog-internal
+          port: 80

@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - lb-cname-01.yaml
+  - lb-main-01.yaml
+  - lb-wildcard-01.yaml
+
+commonAnnotations:
+  cloud.google.com/l4-rbs: "enabled"
+  networking.gke.io/internal-load-balancer-subnet: "prod-loadbalancer"
+  networking.gke.io/internal-load-balancer-allow-global-access: "true"
