@@ -13,27 +13,27 @@ jobs:
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  deploy-dev:
-    uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
-    with:
-      images: flosspicks/xlog-caddy
-      tag: latest
-      cluster: dev
-      namespace: crossbell
-      releaseName: xlog-caddy
-      revision: main
-      dir: deploy/dev
-    secrets:
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-  deploy-prod:
-    uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
-    with:
-      images: flosspicks/xlog-caddy
-      tag: latest
-      cluster: prod
-      namespace: crossbell
-      releaseName: xlog-caddy
-      revision: main
-      dir: deploy/prod
-    secrets:
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+#  deploy-dev:
+#    uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
+#    with:
+#      images: flosspicks/xlog-caddy
+#      tag: latest
+#      cluster: dev
+#      namespace: crossbell
+#      releaseName: xlog-caddy
+#      revision: main
+#      dir: deploy/dev
+#    secrets:
+#      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+#  deploy-prod:
+#    uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
+#    with:
+#      images: flosspicks/xlog-caddy
+#      tag: latest
+#      cluster: prod
+#      namespace: crossbell
+#      releaseName: xlog-caddy
+#      revision: main
+#      dir: deploy/prod
+#    secrets:
+#      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
