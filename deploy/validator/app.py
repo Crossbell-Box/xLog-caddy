@@ -10,7 +10,7 @@ def check_domain():
     domain = request.args.get("domain")
     if not domain:
         return Response(status=404)
-    if domain.endswith(f'.{xlog_domain}') or domain == "xlog.page":
+    if domain.endswith(f'.{xlog_domain}') or domain == xlog_domain:
         return Response(status=200)
 
     # get TXT
