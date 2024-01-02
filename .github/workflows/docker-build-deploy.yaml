@@ -17,7 +17,7 @@ jobs:
     uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
     with:
       images: flosspicks/xlog-caddy
-      tag: latest
+      tag: sha-${{ github.sha }}
       cluster: dev
       namespace: crossbell
       releaseName: xlog-caddy
