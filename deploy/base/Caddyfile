@@ -1,5 +1,5 @@
 {
-    storage redis {
+    storage s3 {
     }
 
     on_demand_tls {

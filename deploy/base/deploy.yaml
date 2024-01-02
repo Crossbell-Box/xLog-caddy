@@ -14,9 +14,12 @@ spec:
     spec:
       containers:
         - name: caddy
-          image: kindjeff/caddy-tlsredis-docker
+          image: flosspicks/xlog-caddy:latest
           imagePullPolicy: Always
-          command: ["caddy", "run", "-config", "/app/Caddyfile"]
+          args:
+          - run
+          - --config
+          - /app/Caddyfile"
           resources:
             requests:
               cpu: 50m

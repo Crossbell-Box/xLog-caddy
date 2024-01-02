@@ -7,3 +7,5 @@ FROM debian:11-slim
 
 RUN apt update && apt install -y ca-certificates
 COPY --from=BUILDER /go/caddy /usr/local/bin/caddy
+
+ENTRYPOINT ["/usr/local/bin/caddy"]
