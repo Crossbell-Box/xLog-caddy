@@ -8,7 +8,7 @@
 }
 
 {$XLOG_DOMAIN}, *.{$XLOG_DOMAIN} {
-    tls jeff@rss3.io {
+    tls devops@rss3.io {
     dns cloudflare {env.CF_API_TOKEN}
     }
 
