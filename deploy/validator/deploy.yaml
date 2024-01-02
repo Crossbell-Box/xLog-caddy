@@ -16,7 +16,7 @@ spec:
         - name: caddy-validator
           image: python
           command: ["/bin/sh", "-c"]
-          args: ["pip install flask requests; flask --app=app run"]
+          args: ["pip install flask requests; flask --app=app run -h 0.0.0.0"]
           resources:
             requests:
               cpu: 50m
