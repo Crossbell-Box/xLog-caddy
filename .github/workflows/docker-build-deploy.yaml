@@ -34,7 +34,7 @@ jobs:
       - deploy-dev
     with:
       images: flosspicks/xlog-caddy
-      tag: latest
+      tag: sha-${{ github.sha }}
       cluster: prod
       namespace: crossbell
       releaseName: xlog-caddy
