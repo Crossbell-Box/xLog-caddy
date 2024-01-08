@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: xlog-caddy
+  name: xlog-caddy-validator
   namespace: crossbell
 spec:
   maxReplicas: 20
@@ -9,7 +9,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: xlog-caddy
+    name: xlog-caddy-validator
   metrics:
     - type: Resource
       resource:
@@ -17,9 +17,3 @@ spec:
         target:
           type: Utilization
           averageUtilization: 150
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 100

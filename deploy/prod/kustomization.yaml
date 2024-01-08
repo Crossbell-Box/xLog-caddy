@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../base
   - hpa.yaml
+  - hpa-validator.yaml
   - svc
   - oia
 
