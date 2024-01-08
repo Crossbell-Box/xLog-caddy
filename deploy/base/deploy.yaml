@@ -11,6 +11,9 @@ spec:
     metadata:
       labels:
         app: xlog-caddy
+      annotations:
+        prometheus.io/port: metrics
+        prometheus.io/scrape: 'true'
     spec:
       containers:
         - name: caddy
@@ -35,6 +38,27 @@ spec:
               name: http
             - containerPort: 443
               name: https
+            - containerPort: 8080
+              name: metrics
+          livenessProbe:
+            httpGet:
+              port: metrics
+              path: /
+              scheme: HTTP
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              port: metrics
+              path: /
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           volumeMounts:
             - name: caddyfile
               mountPath: /app
