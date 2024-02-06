@@ -12,7 +12,7 @@ spec:
       labels:
         app: xlog-caddy
       annotations:
-        prometheus.io/port: metrics
+        prometheus.io/port: "8080"
         prometheus.io/scrape: 'true'
     spec:
       containers:
