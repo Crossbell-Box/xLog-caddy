@@ -26,10 +26,10 @@ spec:
           resources:
             requests:
               cpu: 50m
-              memory: 256Mi
-            limits:
-              cpu: 100m
               memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
           envFrom:
             - secretRef:
                 name: xlog-caddy
