@@ -19,10 +19,10 @@ spec:
           args: ["pip install flask requests; flask --app=app run -h 0.0.0.0"]
           resources:
             requests:
-              cpu: 50m
+              cpu: 200m
               memory: 64Mi
             limits:
-              cpu: 100m
+              cpu: 500m
               memory: 128Mi
           ports:
             - containerPort: 5000
