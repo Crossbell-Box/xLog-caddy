@@ -1,4 +1,4 @@
-FROM golang:1.21 AS BUILDER
+FROM golang:1.25 AS BUILDER
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 RUN xcaddy build --with github.com/ss098/certmagic-s3 --with github.com/caddy-dns/cloudflare
